@@ -1,0 +1,4 @@
+Login = "player1" Password = "player1" Points = "1100" Wins = "1"
+Login = "qwert" Password = "123" Points = "1300" Wins = "0"
+Login = "Ksenia" Password = "135" Points = "3000" Wins = "2"
+Login = "login" Password = "123" Points = "6800" Wins = "3"
