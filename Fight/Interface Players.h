@@ -202,7 +202,7 @@ public:
 		{
 			SetColor(White, Green);
 			SetCursorPosition(x, 4);
-			cout << "Çהמנמגüÿ :" << health;
+			cout << "HP :" << health;
 			SetColor(White, Black);
 		}
 		else
@@ -387,7 +387,7 @@ public:
 		{
 			SetColor(White, Red);
 			SetCursorPosition(x+10, 4);
-			cout << "Çהמנמגüÿ :" << health;
+			cout << "HP :" << health;
 			SetColor(White, Black);
 		}
 		else

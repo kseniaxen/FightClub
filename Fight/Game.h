@@ -47,7 +47,6 @@ public:
 
 	void startPlay()
 	{
-		mainDontChange();
 		int positionTurn = 1;
 		int positionBlock = 1;
 		bool timeToChoiceHit = true;
@@ -61,13 +60,13 @@ public:
 		bool showDeleteBlocks = true;
 
 		bool startAgainGame = true;
-
-
-		//Ќарисовать чтоб было 
-		menu.drawChoiceProtection(positionBlock);
+		
 
 		do
 		{
+			system("cls");
+			mainDontChange();
+			menu.drawChoiceProtection(positionBlock);
 			menu.drawWinsPlayer(winsPlayer);
 			menu.drawPoints(pointsPlayer);
 			menu.drawCurrentPoints(currentPoint);
@@ -137,6 +136,7 @@ public:
 						{
 							currentPoint += POINTS;
 						}
+						Sleep(5000);
 					}
 					timeToChoiceHit = true;
 					checkChoiceBlock = false;
@@ -146,27 +146,28 @@ public:
 					computer->deleteHealth();
 				}
 
-				if ((player->getHealth() == 0) || (computer->getHealth() == 0))
+				if (player->getHealth() == 0 || computer->getHealth() == 0)
 				{
 					endGame();
-					startAgainGame = false;
+					key = _getch();
+					//«десь прибавл€ютс€ победы и общий счет
+					if (key == SPACE)
+					{
+						player->setHealth();
+						computer->setHealth();
+						pointsPlayer += currentPoint;
+						startAgainGame = true;
+					}
+					else {
+						startAgainGame = false;
+					}
 				}
-			}
-
-			//«десь прибавл€ютс€ победы и общий счет
-			if (key == SPACE)
-			{
-				player->setHealth();
-				computer->setHealth();
-				pointsPlayer += currentPoint;
-				startAgainGame = true;
 			}
 
 			if (key == EXIT)
 			{
 				exit = true;
 			}
-
 		} while (!exit);
 	}
 

@@ -63,7 +63,7 @@ public:
 					system("cls");
 					break;
 				case 4:
-					if (points >= 0 && wins >= 0)
+					if (points >= 0 && wins >= 0 && loginPlayer != "" && passwordPlayer != "")
 					{
 						auto game = new Game(loginPlayer, points, wins, new Player(new RealPlayerInterface, new Alerts(loginPlayer)));
 						game->startPlay();
@@ -133,8 +133,8 @@ public:
 		User user(loginPlayer, passwordPlayer,0,0);
 		auto reg = new Registr("Users.txt", user);
 		reg->Registration();
-		loginPlayer = " ";
-		passwordPlayer = " ";
+		loginPlayer = "";
+		passwordPlayer = "";
 	}
 
 	void Authorization()

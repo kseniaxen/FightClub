@@ -39,8 +39,8 @@ class User
 public:
 	User()
 	{
-		userLogin = "!!";
-		userPassword = "!!";
+		userLogin = "";
+		userPassword = "";
 		points = 0;
 		wins = 0;
 	}
@@ -201,23 +201,25 @@ public:
 		}
 		else
 		{
+			bool isLogin = false;
 			SetCursorPosition(x_Reg, y_Reg);
 			cout << "Введите логин:";
 			cin >> loginPlayer;
-			user.setUserLogin(loginPlayer);
 			while (getline(file, temp))
 			{
 				regex rx("Login = \"(.+?)\" Password = \"(.+?)\" Points = \"(.+?)\" Wins = \"(.+?)\"");
 				cmatch res;
 				regex_search(temp.c_str(), res, rx);
-				if (res[1] == user.getUserLogin())
+				if (res[1] == loginPlayer)
 				{
+					isLogin = true;
+					user.setUserLogin(loginPlayer);
 					SetCursorPosition(x_Reg, y_Reg + 2);
 					cout << "Введите пароль:";
 					cin >> passwordPlayer;
-					user.setUserPassword(passwordPlayer);
-					if (res[2] == user.getUserPassword())
+					if (res[2] == passwordPlayer)
 					{
+						user.setUserPassword(passwordPlayer);
 						cout << endl;
 						cout << "Пользователь: " << user.getUserLogin() << endl;
 
@@ -239,6 +241,10 @@ public:
 						break;
 					}
 				}
+			}
+			if (!isLogin) {
+				cout << endl;
+				cout << "Нет такого пользователя!" << endl;
 			}
 		}
 	}
