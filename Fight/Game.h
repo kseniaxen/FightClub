@@ -146,16 +146,16 @@ public:
 					computer->deleteHealth();
 				}
 
-				if (player->getHealth() == 0 || computer->getHealth() == 0)
+				if (player->getHealth() <= 0 || computer->getHealth() <= 0)
 				{
 					endGame();
+					pointsPlayer += currentPoint;
 					key = _getch();
 					//«десь прибавл€ютс€ победы и общий счет
 					if (key == SPACE)
 					{
 						player->setHealth();
 						computer->setHealth();
-						pointsPlayer += currentPoint;
 						startAgainGame = true;
 					}
 					else {
@@ -239,16 +239,16 @@ public:
 	{
 		player->deleteAlerts();
 		computer->deleteAlerts();
-		if (player->getHealth() == 0)
+		if (player->getHealth() <= 0)
 		{
 			computer->drawWin();
 		}
-		else if (computer->getHealth() == 0)
+		else if (computer->getHealth() <= 0)
 		{
 			player->drawWin();
 			this->winsPlayer++;
 		}
-		else if (player->getHealth() == 0 && computer->getHealth() == 0)
+		else if (player->getHealth() <= 0 && computer->getHealth() <= 0)
 		{
 			player->drawDraw();
 			

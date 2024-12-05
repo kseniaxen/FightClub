@@ -1,2 +1,3 @@
 Login = "login" Password = "123" Points = "6800" Wins = "3"
 Login = "qwerty" Password = "123" Points = "900" Wins = "1"
+Login = "test" Password = "test" Points = "800" Wins = "0"
